@@ -1,4 +1,4 @@
-name: Terraform Validation
+name: Terraform
 
 on:
   push:
@@ -6,13 +6,14 @@ on:
       - main
 
 jobs:
-  terraform:
+  validate:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - uses: actions/checkout@v4
 
       - uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Format Check
-        run: terraform fmt -check -recursive
+      - run: terraform fmt -check -recursive

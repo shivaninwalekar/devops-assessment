@@ -25,3 +25,28 @@ This project contains:
 ## How to Run
 
 ## Future Improvements
+
+## Folder Structure
+
+infra/
+docs/
+database/
+scripts/
+
+## Technologies
+
+Terraform
+Docker
+PostgreSQL
+GitHub Actions
+AWS
+
+## Features
+
+Reusable Terraform Modules
+
+Infrastructure as Code
+
+Database Reliability
+
+CI/CD Pipeline
