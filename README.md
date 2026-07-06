@@ -83,3 +83,17 @@ Backup Database
 Restore Database
 
 ./scripts/restore.sh
+
+## Terraform Environments
+
+### Development
+
+- Small database instance
+- 1-day backup retention
+- Deletion protection disabled
+
+### Production
+
+- Larger database instance
+- 7-day backup retention
+- Deletion protection enabled
