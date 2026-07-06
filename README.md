@@ -9,3 +9,19 @@ This project contains:
 - PostgreSQL Database
 - Backup & Restore Scripts
 - GitHub Actions
+# DevOps Assessment
+
+## Project Structure
+
+## Technologies Used
+- Terraform
+- AWS
+- Docker
+- PostgreSQL
+- GitHub Actions
+
+## Folder Structure
+
+## How to Run
+
+## Future Improvements
