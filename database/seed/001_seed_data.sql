@@ -1,6 +1,20 @@
 INSERT INTO hotel_bookings
-(id, org_id, hotel_id, city, checkin_date, checkout_date, amount, status, created_at)
-VALUES
-(gen_random_uuid(), gen_random_uuid(), 'HOTEL001', 'delhi', CURRENT_DATE, CURRENT_DATE + 2, 3500.00, 'CONFIRMED', NOW()),
-(gen_random_uuid(), gen_random_uuid(), 'HOTEL002', 'mumbai', CURRENT_DATE, CURRENT_DATE + 3, 4200.00, 'PENDING', NOW()),
-(gen_random_uuid(), gen_random_uuid(), 'HOTEL003', 'delhi', CURRENT_DATE, CURRENT_DATE + 1, 2800.00, 'CANCELLED', NOW());
+SELECT
+gen_random_uuid(),
+gen_random_uuid(),
+'HTL-' || gs,
+CASE
+WHEN gs % 3 = 0 THEN 'delhi'
+WHEN gs % 3 = 1 THEN 'mumbai'
+ELSE 'bangalore'
+END,
+CURRENT_DATE,
+CURRENT_DATE + 2,
+(random()*5000)::numeric(12,2),
+CASE
+WHEN gs % 3 = 0 THEN 'CONFIRMED'
+WHEN gs % 3 = 1 THEN 'PENDING'
+ELSE 'CANCELLED'
+END,
+NOW() - (gs || ' days')::interval
+FROM generate_series(1,100) gs;

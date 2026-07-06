@@ -50,3 +50,36 @@ Infrastructure as Code
 Database Reliability
 
 CI/CD Pipeline
+
+## Query Optimization
+
+The following indexes were created:
+
+1. idx_city_created_at
+
+Used for filtering:
+
+WHERE city='delhi'
+AND created_at >= NOW() - INTERVAL '30 days'
+
+2. idx_org_status
+
+Used for GROUP BY:
+
+GROUP BY org_id, status
+
+This reduces full table scans and improves aggregation performance.
+
+## Run Project
+
+Start Database
+
+docker compose up -d
+
+Backup Database
+
+./scripts/backup.sh
+
+Restore Database
+
+./scripts/restore.sh
