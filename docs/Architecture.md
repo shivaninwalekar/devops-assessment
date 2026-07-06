@@ -1,26 +1,13 @@
-# Architecture Diagram
-
-```text
-                +----------------------+
-                |     GitHub Repo      |
-                +----------+-----------+
-                           |
-                           |
-                    GitHub Actions
-                           |
-                           |
-          +----------------+----------------+
-          |                                 |
-          | Terraform                       |
-          |                                 |
-   +------+-------+                 +-------+------+
-   |   Network    |                 |      RDS     |
-   |     VPC      |                 | PostgreSQL   |
-   +------+-------+                 +-------+------+
-          |                                 |
-          |                                 |
-          +--------------+------------------+
-                         |
-                         |
-                     ECS Cluster
-```
+Developer
+     |
+GitHub
+     |
+GitHub Actions
+     |
+Terraform
+     |
+-------------
+|           |
+VPC       PostgreSQL
+|
+ECS
