@@ -1,7 +1,6 @@
-resource "aws_vpc" "main" {
-  cidr_block = var.vpc_cidr
+module "network" {
+  source = "./modules/network"
 
-  tags = {
-    Name = "${var.project_name}-vpc"
-  }
-}# Main Terraform configuration
+  project_name = "devops-assessment"
+  vpc_cidr     = "10.0.0.0/16"
+}
