@@ -1,10 +1,26 @@
-# Architecture
+# Architecture Diagram
 
-Terraform creates:
-
-- VPC
-- Subnets
-- ECS
-- PostgreSQL RDS
-
-CI/CD is handled by GitHub Actions.
+```text
+                +----------------------+
+                |     GitHub Repo      |
+                +----------+-----------+
+                           |
+                           |
+                    GitHub Actions
+                           |
+                           |
+          +----------------+----------------+
+          |                                 |
+          | Terraform                       |
+          |                                 |
+   +------+-------+                 +-------+------+
+   |   Network    |                 |      RDS     |
+   |     VPC      |                 | PostgreSQL   |
+   +------+-------+                 +-------+------+
+          |                                 |
+          |                                 |
+          +--------------+------------------+
+                         |
+                         |
+                     ECS Cluster
+```

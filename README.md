@@ -1,99 +1,149 @@
 # DevOps Assessment
 
-## Terraform + Database Reliability
+## Overview
 
-This project contains:
+This project demonstrates Infrastructure as Code (IaC), containerization, database management, and CI/CD automation using Terraform, Docker, PostgreSQL, and GitHub Actions.
 
-- Terraform Infrastructure
-- Docker Compose
-- PostgreSQL Database
-- Backup & Restore Scripts
+The project is structured to support separate Development and Production environments while following reusable Terraform module practices.
+
+---
+
+## Tech Stack
+
+- Terraform
+- Docker & Docker Compose
+- PostgreSQL
 - GitHub Actions
-# DevOps Assessment
+- Git
+- AWS (Infrastructure code only, not deployed)
+
+---
 
 ## Project Structure
 
-## Technologies Used
-- Terraform
-- AWS
-- Docker
-- PostgreSQL
-- GitHub Actions
+```
+devops-assessment
+│
+├── .github/
+│   └── workflows/
+│       └── terraform.yml
+│
+├── database/
+│   ├── migrations/
+│   ├── seed/
+│   └── indexes/
+│
+├── docs/
+│
+├── infra/
+│   ├── envs/
+│   │   ├── dev/
+│   │   └── prod/
+│   ├── modules/
+│   │   ├── network/
+│   │   ├── ecs/
+│   │   └── rds/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   └── versions.tf
+│
+├── scripts/
+│   ├── backup.sh
+│   └── restore.sh
+│
+├── docker-compose.yml
+├── Dockerfile
+├── README.md
+└── .gitignore
+```
 
-## Folder Structure
+---
 
-## How to Run
+## Terraform Modules
+
+### Network Module
+
+- VPC
+- Public Subnets
+- Private Subnets
+
+### ECS Module
+
+- ECS Cluster
+
+### RDS Module
+
+- PostgreSQL Database
+
+---
+
+## Database
+
+Tables:
+
+- hotel_bookings
+- booking_events
+
+Features:
+
+- Migration Scripts
+- Seed Data
+- Query Optimization Indexes
+
+---
+
+## Docker
+
+Start PostgreSQL
+
+```bash
+docker compose up -d
+```
+
+Stop PostgreSQL
+
+```bash
+docker compose down
+```
+
+---
+
+## Backup Database
+
+```bash
+./scripts/backup.sh
+```
+
+---
+
+## Restore Database
+
+```bash
+./scripts/restore.sh
+```
+
+---
+
+## GitHub Actions
+
+Automatically runs:
+
+- Terraform Format Check
+
+---
 
 ## Future Improvements
 
-## Folder Structure
+- Deploy infrastructure to AWS
+- Add ECS Task Definition
+- Add Load Balancer
+- Configure Remote Terraform Backend
+- Add Monitoring and Logging
 
-infra/
-docs/
-database/
-scripts/
+---
 
-## Technologies
+## Author
 
-Terraform
-Docker
-PostgreSQL
-GitHub Actions
-AWS
-
-## Features
-
-Reusable Terraform Modules
-
-Infrastructure as Code
-
-Database Reliability
-
-CI/CD Pipeline
-
-## Query Optimization
-
-The following indexes were created:
-
-1. idx_city_created_at
-
-Used for filtering:
-
-WHERE city='delhi'
-AND created_at >= NOW() - INTERVAL '30 days'
-
-2. idx_org_status
-
-Used for GROUP BY:
-
-GROUP BY org_id, status
-
-This reduces full table scans and improves aggregation performance.
-
-## Run Project
-
-Start Database
-
-docker compose up -d
-
-Backup Database
-
-./scripts/backup.sh
-
-Restore Database
-
-./scripts/restore.sh
-
-## Terraform Environments
-
-### Development
-
-- Small database instance
-- 1-day backup retention
-- Deletion protection disabled
-
-### Production
-
-- Larger database instance
-- 7-day backup retention
-- Deletion protection enabled
+Shivani Walekar
